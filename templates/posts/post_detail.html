@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    {{ post.author }}
+    {{ post.title }}
+    {{ post.body }}
+    {{ post.created_at }}
+
+    <a href="{% url 'post_edit' post.pk %}">Edit Post</a>
+    <a href="{% url 'post_delete' post.pk %}">Delete Post</a>
+</div>
+
+{% endblock content %}
