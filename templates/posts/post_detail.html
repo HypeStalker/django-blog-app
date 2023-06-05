@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load tailwind_filters %}
+
 {% block content %}
 
 <div class="max-w-lg mx-auto">
@@ -22,7 +24,6 @@
             {% for comment in post.comment_set.all  %}
                 <p> {{ comment.author }}: {{ comment }}</p>
             {% endfor %}
-            
             <br>
             <hr>
             <br>
@@ -30,8 +31,8 @@
             {% if user.is_authenticated %}
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button type="submit">Post comment</button>
+                {{ form|crispy }}
+                <button type="submit" class="text-white bg-indigo-700 hover:bg-indigo-500 font-bold py-2 px-4 rounded-full">Post comment</button>
             </form>
             {% else %}
             <p>You must be logged in to comment posts</p>

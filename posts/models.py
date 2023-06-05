@@ -14,7 +14,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    comment = models.TextField(max_length=100)
+    comment = models.CharField(max_length=100)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -22,5 +22,3 @@ class Comment(models.Model):
     
     def get_absolute_url(self):
         return reverse("post_list")
-    
-        

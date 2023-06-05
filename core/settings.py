@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     "tailwind",
     "theme",
+    "crispy_forms",
+    "crispy_tailwind",
 
     "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
@@ -143,3 +145,7 @@ INTERNAL_IPS = [
 ]
 
 TAILWIND_CSS_PATH = "css/dist/styles.css"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
