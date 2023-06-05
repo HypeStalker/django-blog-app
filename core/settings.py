@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "tailwind",
+    "theme",
+
     "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
 ]
@@ -130,3 +133,13 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGIN_REDIRECT_URL = "post_list"
 LOGOUT_REDIRECT_URL = "post_list"
+
+# Tailwind
+
+TAILWIND_APP_NAME = "theme"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+TAILWIND_CSS_PATH = "css/dist/styles.css"

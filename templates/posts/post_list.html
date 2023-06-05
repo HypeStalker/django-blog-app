@@ -2,16 +2,22 @@
 
 {% block content %}
 
-<a href="{% url 'post_create' %}">Create new post</a>
-
 {% for post in post_list %}
 
-<div>
-    {{ post.author }}
-    <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
-    {{ post.body }}
-    {{ post.created_at }}
-</div><br>
+<div class="max-w-lg mx-auto">
+    <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
+        <div class="p-5">
+            <a href="#">
+                <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{ post.title }}</h5>
+            </a>
+            <span>by {{ post.author }} | {{ post.created_at }}</span>
+            <p class="font-normal text-gray-700 mb-3">{{ post.body }}</p>
+            <a class="text-white bg-indigo-700 hover:bg-indigo-500 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="{% url 'post_detail' post.pk %}">
+                See details
+            </a>
+        </div>
+    </div>
+</div>
 
 {% endfor %}
 
