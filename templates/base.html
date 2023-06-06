@@ -1,40 +1,37 @@
 {% load static %}
-{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'base.css' %}">
     <title>{% block title %}Django Blog App{% endblock title %}</title>
   </head>
   <body>
+    <div class="container">
     <nav>
-        <ul class="flex justify-between items-center bg-indigo-900 h-16 text-white font-medium">
-            <li class="mr-3">
-              <a class="" href="{% url 'post_list' %}">Django Blog App</a>
-            </li>
-            {% if user.is_authenticated %}
-            <div class="mx-12">
-              <a class="inline-block py-2 px-4" href="{% url 'post_create' %}">+Create new post</a>
-            </div>
-            <li class="mr-3">
-                <p class="inline-block py-2 px-4">{{ user.username }}</p>
-                <a class="inline-block py-2 px-4" href="{% url 'logout' %}">Log Out</a>
-              </li>
-            {% else %}
-            <li class="mr-3">
-              <a class="inline-block py-2 px-4" href="{% url 'login' %}">Log In</a>
-              <a class="inline-block py-2 px-4" href="{% url 'signup' %}">Sign Up</a>
-            </li>
-            {% endif %}
-          </ul>
+      <div class="title">
+          <h1><a href="{% url 'post_list' %}">Django Blog App</a></h1>
+      </div>
+      {% if user.is_authenticated %}
+      <div class="nav-user-options">
+        <p>{{ user.username }}</p>
+        <a href="{% url 'post_create' %}" class="nav-btn">+New Post</a>
+        <a href="{% url 'logout' %}" class="nav-btn">Log Out</a>
+      </div>
+      {% else %}
+      <div class="nav-user-options">
+        <a href="{% url 'login' %}" class="nav-btn">Log In</a>
+        <a href="{% url 'signup' %}" class="nav-btn">Sign Up</a>
+      </div>
+      {% endif %}
     </nav>
+      <br>
       <main>
         {% block content %}
         {% endblock content %}
       </main>
-    </div>
+  </div>
   </body>
 </html>

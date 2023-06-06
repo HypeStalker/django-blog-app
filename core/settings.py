@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -42,10 +42,6 @@ INSTALLED_APPS = [
 
 
     "whitenoise.runserver_nostatic",
-    "tailwind",
-    "theme",
-    "crispy_forms",
-    "crispy_tailwind",
 
     "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
@@ -147,17 +143,3 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGIN_REDIRECT_URL = "post_list"
 LOGOUT_REDIRECT_URL = "post_list"
-
-# Tailwind
-
-TAILWIND_APP_NAME = "theme"
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-
-TAILWIND_CSS_PATH = "css/dist/styles.css"
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
-
-CRISPY_TEMPLATE_PACK = "tailwind"
