@@ -12,6 +12,7 @@ from .forms import CommentForm
 class PostListView(ListView):
     model = Post
     template_name = "posts/post_list.html"
+    queryset = Post.objects.order_by("-created_at")
 
 class CommentGet(DetailView):
     model = Post
